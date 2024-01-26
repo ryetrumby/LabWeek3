@@ -30,7 +30,7 @@ public class LabTask2 : MonoBehaviour
     {        
         CalculateCosts();
         CalculateEarnings();
-        Debug.LogFormat("The bookstore spent ${0} and made ${1} in profit.", wholesaleCost, wholesaleProfit);
+        Debug.Log($"The bookstore spent ${wholesaleCost} and made ${wholesaleProfit} in profit.");
     }
 
     void CalculateCosts()
@@ -39,16 +39,16 @@ public class LabTask2 : MonoBehaviour
         //Once additional copies is known, multiply it by the shipping cost of additional copies.
         //Then, add it to the shipping cost of nonadditional copies to get the total shipping cost.
         additionalCopiesSold = copiesSold - nonAdditionalCopiesSold;
-        //Debug.LogFormat("Amount sold: {0}. Number of not additional copies: {1}. Number of additional copies: {2}.", copiesSold, nonAdditionalCopiesSold, additionalCopiesSold);
+        //Debug.Log($"Amount sold: {copiesSold}. Number of non additional copies: {nonAdditionalCopiesSold}. Number of additional copies: {additionalCopiesSold}.");
         totalShipping = (nonAdditionalCopyShipping * nonAdditionalCopiesSold) + (additionalCopyShipping * additionalCopiesSold);
-        //Debug.LogFormat("Nonadditional ship price: {0}. Additional copy ship price: {1}. Total spent on shipping: {2}.", nonAdditionalCopyShipping, additionalCopyShipping, totalShipping);
+        //Debug.Log($"Nonadditional ship price: {nonAdditionalCopyShipping}. Additional copy ship price: {additionalCopyShipping}. Total spent on shipping: {totalShipping}.");
         
         //Find how much the bookstore spent on the books by first calculating their price to obtain the books.
         //Once you know their price, multiply it by how much was sold to figure out the total spent on the books. 
         bookstorePrice = coverPrice - coverPrice * bookstoreDiscount;
-        //Debug.LogFormat("Cover price: {0}. Discount: {1}. Bookstore bought for: {2}.", coverPrice, bookstoreDiscount, bookstorePrice);
+        //Debug.Log($"Cover price: {coverPrice}. Discount: {bookstoreDiscount}. Bookstore bought for: {bookstorePrice}.");
         spentOnBooks = bookstorePrice * copiesSold;
-        //Debug.LogFormat("Total spent on books: {0}.", spentOnBooks);    
+        //Debug.Log($"Total spent on books: {spentOnBooks}.");    
 
         //Finally, calculate the total costs of the bookstore by adding together the total spent on shipping and total spent on books.
         wholesaleCost = spentOnBooks + totalShipping;  
@@ -58,7 +58,7 @@ public class LabTask2 : MonoBehaviour
     {
         //Figure out how much the bookstore earned by multiplying how much they sold the books for by the number sold.
         totalEarned = coverPrice * copiesSold;
-        //Debug.LogFormat("Total money earned: {0}.", totalEarned);
+        //Debug.Log($"Total money earned: {totalEarned}.");
 
         //Find the amount of profit earned by the bookstore by subtracting their costs from their earnings.
         wholesaleProfit = totalEarned - wholesaleCost;
