@@ -11,9 +11,9 @@ public class LabTask1 : MonoBehaviour
     public float quiz; //# of quizzes
     public float assign; //# of assignments
     public float instructor; //instructor experience
-    float addedTogether; //All percentages added together.
 
     //Assumption - There can only be 1 module, reading material, quiz, and assignment in one week
+    //Assumption - Input for instructor is a 0 or 1, with 0 being experience and 1 being no experience
    
     
     
@@ -27,13 +27,17 @@ public class LabTask1 : MonoBehaviour
    
     void ConvertPercentages()
     {
+        //Create correct values for the scale
+        moduleNum = moduleNum / 10;
+        readMat = (readMat / 10) * 2;
+        quiz = quiz / 10;
+        assign = (assign / 10) * 2;
+        
         //Add all the percentages together.
-        addedTogether = moduleNum + readMat + quiz + assign + instructor;
-        //Debug.Log(addedTogether);
-
-        //Divide the percentages by 10 to get a chal score that is between 1 and 10.
-        chalScore = addedTogether/10;
+        chalScore = moduleNum + readMat + quiz + assign + instructor;
         //Debug.Log(chalScore);
+
+      
     }
 
     void DisplayValues()
